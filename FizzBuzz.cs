@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        FizzBuzz(50); // Example usage with upto = 16
+        FizzBuzz(100); // Example usage with upto = 16
     }
 
     static void FizzBuzz(int upto)
