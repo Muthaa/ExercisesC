@@ -33,5 +33,6 @@ class Program
             }
 
         } while (heroHealth > 0 && monsterHealth > 0);
+        // Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
     }
 }
