@@ -1,0 +1,15 @@
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\bin\Debug\net8.0\planner.exe
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\bin\Debug\net8.0\planner.deps.json
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\bin\Debug\net8.0\planner.runtimeconfig.json
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\bin\Debug\net8.0\planner.dll
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\bin\Debug\net8.0\planner.pdb
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.AssemblyInfoInputs.cache
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.AssemblyInfo.cs
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.csproj.CoreCompileInputs.cache
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.sourcelink.json
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.dll
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\refint\planner.dll
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.pdb
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\planner.genruntimeconfig.cache
+C:\Users\jakea\source\repos\Muthaa\ExercisesC\pettingzoo\planner\obj\Debug\net8.0\ref\planner.dll
