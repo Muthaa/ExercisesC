@@ -4,7 +4,14 @@ on:
   push:
     branches:
     - main
-
+jobs:
+    verify-connection:
+        steps:
+            - name: Verify Connection to SQL Server
+            - run: node testconnection.js
+        env:
+            PROJECT_SERVER: PH202323V
+            PROJECT_DATABASE: HAMaster
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -20,8 +27,128 @@ jobs:
 
         - run: dotnet build awesomeproject
 
+
+- uses: actions/upload-artifact
+  with:
+    name: harness-build-log
+    path: bin/output/logs/harness.log
+
+You can upload an entire folder:
+
+YAML
+
+Copy
+
+- uses: actions/upload-artifact
+  with:
+    name: harness-build-logs
+    path: bin/output/logs/
+
+You can use wildcards:
+
+YAML
+
+Copy
+
+- uses: actions/upload-artifact
+  with:
+    name: harness-build-logs
+    path: bin/output/logs/harness[ab]?/*
+
+You can specify multiple paths:
+
+YAML
+
+Copy
+
+- uses: actions/upload-artifact
+  with:
+    name: harness-build-logs
+    path: |
+        bin/output/logs/harness.log
+        bin/output/logs/harnessbuild.txt
+
+For more information on this action, see upload-artifact.
+
+Download-artifact
+There's a corresponding action for downloading (or retrieving) artifacts.
+
+YAML
+
+Copy
+
+- uses: actions/download-artifact
+  with:
+    name: harness-build-log
+
+If no path is specified, it's downloaded to the current directory.
+
+For more information on this action, see download-artifact.
+
+Artifact retention
+A default retention period can be set for the repository, organization, or enterprise.
+
+You can set a custom retention period when uploading, but it can't exceed the defaults for the repository, organization, or enterprise.
+
+YAML
+
+Copy
+
+- uses: actions/upload-artifact
+  with:
+    name: harness-build-log
+    path: bin/output/logs/harness.log
+    retention-days: 12
+
 On: Specifies what will occur when code is pushed.
 Jobs: There's a single job called build.
 Strategy: It's being used to specify the Node.js version.
 Steps: Are doing a checkout of the code and setting up dotnet.
 Run: Is building the code.
+
+
+Secrets aren't passed automatically to the runners when workflows are executed. To make a secret available to an action, you must set the secret as an input or environment variable in the workflow file. To accomplish this, you can use the secrets context as illustrated in following example:
+
+YAML
+
+Copy
+steps:
+
+  - name: Test Database Connectivity
+    with:
+      db_username: ${{ secrets.DBUserName }}
+      db_password: ${{ secrets.DBPassword }}
+
+Referencing secrets from the command line
+When referencing secrets from the command line, you can treat them like shell environment variables, as illustrated by the following example:
+
+steps:
+
+YAML
+
+Copy
+- shell: pwsh
+  env:
+    DB_PASSWORD: ${{ secrets.DBPassword }}
+  run: |
+    db_test "$env:DB_PASSWORD"
+It's important to follow this approach, which minimizes the risk of their accidental exposure. Secrets passed between processes from the command line can be viewed by using the PowerShell command and captured in security audit logs.
+
+Using secrets in if: conditionals
+Since secrets can't be directly referenced in if: conditionals, as a workaround, consider setting secrets as job-level environment variables, then referencing the environment variables to conditionally run steps in the job, as in the following example:
+
+YAML
+
+Copy
+name: Run a step if a secret has been set
+on: push
+jobs:
+  samplejob:
+    runs-on: ubuntu-latest
+    env:
+      job_secret: ${{ secrets.JobSecret }}
+    steps:
+      - if: ${{ env.job_secret != '' }}
+        run: echo 'the secret has a value set.'
+      - if: ${{ env.job_secret == '' }}
+        run: echo ' the secret does not have a value set.'
